@@ -22,8 +22,3 @@ describe("number of trailing zeros of N factorial", function () {
         assert.equal(zeros(30), 7, "Testing with n = 30")
     });
 });
-
-// 5 10 15 20 25 30
-
-
-//
