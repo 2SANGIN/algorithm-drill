@@ -1,5 +1,5 @@
 /*
- * validate sdoku with size N x N
+ * validate sudoku with size N x N
  * https://www.codewars.com/kata/540afbe2dc9f615d5e000425/train/javascript
  */
 const Sudoku = function (data) {
