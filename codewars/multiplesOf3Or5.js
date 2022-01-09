@@ -4,6 +4,9 @@
  * Complexity: O(1)
  */
 function solution(number) {
+    if (number <= 3) {
+        return 0;
+    }
     const sumOf = multipleNumber => {
         const count = Math.floor((number - 1) / multipleNumber);
         return (count + 1) * multipleNumber * count / 2;
