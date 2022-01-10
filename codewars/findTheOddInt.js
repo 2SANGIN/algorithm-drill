@@ -1,18 +1,10 @@
 /*
  * Find the odd int
  * https://www.codewars.com/kata/54da5a58ea159efa38000836/train/javascript
- * Complexity: O(2n)
+ * Complexity: O(n)
  */
 function findOdd(A) {
-    const indexMap = A.reduce((indexMap, integer, index) => {
-        indexMap[integer] = [...(indexMap[integer] || []), index];
-        return indexMap;
-    }, {});
-
-    const oddNumberIndex = Object.values(indexMap)
-                                 .find(indexesOfNumber => indexesOfNumber.length & 1)
-                                 .shift();
-    return A[oddNumberIndex];
+    return A.reduce((prev, cur) => prev ^ cur); // XOR
 }
 
 const {assert} = require("chai");
