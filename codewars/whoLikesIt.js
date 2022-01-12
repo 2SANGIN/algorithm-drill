@@ -4,21 +4,13 @@
  * Complexity: O(1)
  */
 function likes(names) {
-    let builder = [["no one"], [], [], [" likes", "this"]];
-    if (names.length) {
-        builder = [[names.shift()], [], [], builder[3]];
-        if (names.length) {
-            builder = [builder[0], [" and", names.shift()], [], [" like", "this"]];
-            if (names.length) {
-                builder = [builder[0], [",", builder[1][1]], [" and", names.shift()], builder[3]];
-                if (names.length) {
-                    builder = [builder[0], builder[1], [builder[2][0], names.length + 1, "others"], builder[3]];
-                }
-            }
-        }
-    }
-    return builder.map(arr => arr.join(" "))
-                  .join("");
+    return {
+        0: `no one likes this`,
+        1: `${names[0]} likes this`,
+        2: `${names[0]} and ${names[1]} like this`,
+        3: `${names[0]}, ${names[1]} and ${names[2]} like this`,
+        4: `${names[0]}, ${names[1]} and ${names.length - 2} others like this`
+    }[Math.min(4, names.length)];
 }
 
 const {assert} = require("chai");
