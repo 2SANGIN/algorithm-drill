@@ -24,12 +24,6 @@ describe("Who likes it?", function () {
     test(["George", "Max", "Mark", "Jacob", "Alex"], "George, Max and 3 others like this");
 });
 
-let a1 = [["no one"], [], [], [" likes", "this"]]; // 0: no one -> name
-let a2 = [["Alex"], [], [], [" likes", "this"]];  // 1: append, 3: likes -> like
-let a3 = [["Alex"], [" and", "Jacob"], [], [" like", "this"]]; // 1: " and" -> "," / 2: append
-let a4 = [["Alex"], [",", "Jacob"], ["and", "Mark"], [" like", "this"]];
-let a5 = [["Alex"], [",", "Jacob"], ["and", "2 others"], [" like", "this"]];
-
 function test(parameter, expected) {
     const actual = likes([...parameter]);
     it(`case [${parameter}] -> Expected ${expected}, got ${actual}`, () => {
