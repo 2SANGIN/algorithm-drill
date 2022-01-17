@@ -1,1 +1,1 @@
-# algorithm-drill
+# daily-algorithm
