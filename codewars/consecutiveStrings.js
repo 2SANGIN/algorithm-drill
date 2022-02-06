@@ -8,14 +8,9 @@ function longestConsec(strarr, k) {
         return "";
     }
 
-    const concatArray = strarr.reduce((concat, str, index, array) => [...concat, array.slice(index, index + k).join("")], [])
-                              .slice(0, strarr.length - k + 1);
-
-    const lengthArray = concatArray.map(str => str.length);
-
-    const maxLength = Math.max(...lengthArray);
-
-    return concatArray[lengthArray.indexOf(maxLength)];
+    return strarr.map((str, index, array) => array.slice(index, index + k).join(""))
+                 .slice(0, strarr.length - k + 1)
+                 .reduce((longest, current) => longest.length > current.length ? longest : current);
 }
 
 const {assert} = require("chai");
