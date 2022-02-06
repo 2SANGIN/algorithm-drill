@@ -4,7 +4,7 @@
  * Complexity: O(n^2)
  */
 function longestConsec(strarr, k) {
-    if (strarr.length === 0 || k < 0 || k > strarr.length) {
+    if (k <= 0 || k > strarr.length) {
         return "";
     }
 
