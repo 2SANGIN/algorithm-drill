@@ -1,7 +1,7 @@
 /*
  * Consecutive strings
  * https://www.codewars.com/kata/56a5d994ac971f1ac500003e/train/javascript
- * Complexity: O(n^2)
+ * Complexity: O(n)
  */
 function longestConsec(strarr, k) {
     if (k <= 0 || k > strarr.length) {
