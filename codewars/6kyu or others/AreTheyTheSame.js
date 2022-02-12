@@ -7,13 +7,15 @@ function comp(array1, array2) {
         return false;
     }
     const dict = array1.map(num => num * num)
-        .reduce((dict, num) => (dict[num] = (dict[num] || 0) + 1, dict), {});
+                       .reduce((dict, num) => {
+                           return dict[num] = (dict[num] || 0) + 1, dict;
+                       }, {});
     return array2.every(num => --dict[num] >= 0);
 }
 
 
-const chai = require("chai");
-const assert = chai.assert;
+const chai                    = require("chai");
+const assert                  = chai.assert;
 chai.config.truncateThreshold = 0;
 
 describe("Are they the \"same\"?", () => {
