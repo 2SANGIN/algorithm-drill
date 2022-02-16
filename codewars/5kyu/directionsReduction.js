@@ -4,27 +4,21 @@
  * Complexity: O(n)
  */
 function dirReduc(arr) {
-    const dir = {
-        NORTH: 1,
-        SOUTH: -1,
-        EAST : 2,
-        WEST : -2
+    const opposite = {
+        NORTH: "SOUTH",
+        SOUTH: "NORTH",
+        EAST : "WEST",
+        WEST : "EAST"
     };
 
-    const newPath = [...arr];
-    let i         = 1;
-    while (i < newPath.length) {
-        const prev = dir[newPath[i - 1]];
-        const cur  = dir[newPath[i]];
-
-        if (cur + prev === 0) {
-            newPath.splice(--i, 2);
+    return arr.reduce((dirs, dir) => {
+        if (dirs[dirs.length - 1] === opposite[dir]) {
+            dirs.pop();
         } else {
-            i++;
+            dirs.push(dir);
         }
-    }
-
-    return newPath;
+        return dirs;
+    }, []);
 }
 
 const {assert} = require("chai");
