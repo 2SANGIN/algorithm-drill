@@ -8,21 +8,17 @@ function snail(array) {
     const result = [];
 
     while (matrix.length) {
-        const firstRow = matrix.shift();
-        const lastRow  = matrix.pop();
+        result.push(...matrix.shift());
 
-        result.push(...firstRow);
         for (const midRow of matrix) {
             result.push(midRow.pop());
         }
-        if (lastRow) {
-            result.push(...lastRow.reverse());
+
+        result.push(...(matrix.pop() || []).reverse());
+
+        for (let i = matrix.length - 1; i > 0; i--) {
+            result.push(matrix[i].shift());
         }
-        const climb = [];
-        for (const midRow of matrix) {
-            climb.push(midRow.shift());
-        }
-        result.push(...climb.reverse());
     }
     return result;
 }
