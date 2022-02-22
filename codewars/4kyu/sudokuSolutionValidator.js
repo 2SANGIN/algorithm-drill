@@ -4,46 +4,20 @@
  * Complexity: O(n^2)
  */
 function validSolution(board) {
-    for (let row of board) {
-        const rotate = {};
+    const sumArray = [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    ];
 
+    for (let row = 0; row < 9; row++) {
         for (let col = 0; col < 9; col++) {
-            if (rotate[row[col]]) {
-                return false;
-            }
-
-            rotate[row[col]] = true;
+            sumArray[0][row] += board[row][col];
+            sumArray[1][col] += board[row][col];
+            sumArray[2][Math.floor(row / 3) * 3 + Math.floor(col / 3)] += board[row][col];
         }
     }
-
-    for (let col = 0; col < 9; col++) {
-        const rotate = {};
-
-        for (let row = 0; row < 9; row++) {
-            if (rotate[board[row][col]]) {
-                return false;
-            }
-
-            rotate[board[row][col]] = true;
-        }
-    }
-
-    for (let block = 0; block < 9; block++) {
-        const rowOffset = Math.floor(block / 3) * 3;
-        const colOffset = (block % 3) * 3;
-        const rotate    = {};
-
-        for (let row = rowOffset; row < rowOffset + 3; row++) {
-            for (let col = colOffset; col < colOffset + 3; col++) {
-                if (rotate[board[row][col]]) {
-                    return false;
-                }
-
-                rotate[board[row][col]] = true;
-            }
-        }
-    }
-    return true;
+    return [].concat(...sumArray).every(sum => sum === 45);
 }
 
 const {assert} = require("chai");
